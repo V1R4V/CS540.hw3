@@ -85,6 +85,17 @@ def perturb_image(image, U, sigma):
     return x_perturbed
     raise NotImplementedError
 
+
+# X = load_and_center_dataset('celeba_60x50.npy')
+# S = get_covariance(X)
+# Lambda, U = get_eig(S, 50)
+# celeb_idx = 34
+# x = X[celeb_idx]
+# x_fullres = np.load('celeba_218x178x3.npy')[celeb_idx]
+# reconstructed = project_and_reconstruct_image(x, U)
+# fig, ax1, ax2, ax3 = display_image(x_fullres, x, reconstructed)
+# plt.show()
+
 # X = load_and_center_dataset('celeba_60x50.npy')
 # S = get_covariance(X)
 # Lambda, U = get_eig(S, 50)
