@@ -49,7 +49,6 @@ def project_and_reconstruct_image(image, U):
     # Your implementation goes here!
     alpha = np.dot(U.T, image)
 
-    # Reconstruct the image using the weights and eigenvectors
     x_reconstructed = np.dot(U, alpha)
 
     return x_reconstructed
@@ -57,7 +56,6 @@ def project_and_reconstruct_image(image, U):
 
 def display_image(im_orig_fullres, im_orig, im_reconstructed):
     # Please use the format below to ensure grading consistency
-
     fig, (ax1, ax2, ax3) = plt.subplots(figsize=(9,3), ncols=3)
 
     # Your implementation goes here!
@@ -67,12 +65,12 @@ def display_image(im_orig_fullres, im_orig, im_reconstructed):
     ax1.set_aspect('equal')
 
     im_orig_reshaped = im_orig.reshape(60, 50)
-    img2 = ax2.imshow(im_orig_reshaped, aspect='equal', cmap='gray')  # Added cmap='gray'
+    img2 = ax2.imshow(im_orig_reshaped, aspect='equal', cmap='gray')
     ax2.set_title('Original')
     fig.colorbar(img2, ax=ax2)
 
     im_reconstructed_reshaped = im_reconstructed.reshape(60, 50)
-    img3 = ax3.imshow(im_reconstructed_reshaped, aspect='equal', cmap='gray')  # Added cmap='gray'
+    img3 = ax3.imshow(im_reconstructed_reshaped, aspect='equal', cmap='gray') 
     ax3.set_title('Reconstructed')
     fig.colorbar(img3, ax=ax3)
 
