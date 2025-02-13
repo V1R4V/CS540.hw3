@@ -15,7 +15,7 @@ def get_covariance(dataset):
     transpose_x=np.transpose(dataset)
     n=dataset.shape[0]
     dot_product=np.dot(transpose_x,dataset)
-    covariance_x= (dot_product)*(1/(n-1))
+    covariance_x=(dot_product)*(1/(n-1))
     return covariance_x
     raise NotImplementedError
 
@@ -34,7 +34,10 @@ def get_eig_prop(S, prop):
     # Your implementation goes here!
     eigvals, eigvecs = eigh(S)
     eigvals = eigvals[::-1]
+    # [::-1] means "take all elements and reverse their order."
     eigvecs = eigvecs[:, ::-1]
+    # The first colon : means "take all rows."
+    # The second colon ::-1 means "reverse the order of the columns." It indicates that the columns should be selected in reverse order.
     total_variance = np.sum(eigvals)
     variance_ratio = eigvals / total_variance
     selected_indices = np.where(variance_ratio > prop)[0]
@@ -48,9 +51,7 @@ def get_eig_prop(S, prop):
 def project_and_reconstruct_image(image, U):
     # Your implementation goes here!
     alpha = np.dot(U.T, image)
-
     x_reconstructed = np.dot(U, alpha)
-
     return x_reconstructed
     raise NotImplementedError
 
@@ -85,6 +86,12 @@ def perturb_image(image, U, sigma):
     return x_perturbed
     raise NotImplementedError
 
+# x=load_and_center_dataset('celeba_60x50.npy')
+# #print(len(x[0]))
+# S = get_covariance(x)
+# Lambda, U = get_eig(S, 3)
+# print(Lambda)
+
 
 # X = load_and_center_dataset('celeba_60x50.npy')
 # S = get_covariance(X)
@@ -104,4 +111,4 @@ def perturb_image(image, U, sigma):
 # x_fullres = np.load('celeba_218x178x3.npy')[celeb_idx]
 # x_perturbed = perturb_image(x, U, sigma=1000)
 # fig, ax1, ax2, ax3 = display_image(x_fullres, x, x_perturbed)
-# plt.show()show
+# plt.show()
